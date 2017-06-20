@@ -10,7 +10,7 @@
 
 <body class="centered-form">
   <div class="centered-form__form">
-    <form action="/chat.html">
+    <form id="login" action="/chat.html">
       <div class="form-field">
         <h3>Skyline chat</h3>
       </div>
@@ -18,15 +18,26 @@
         <label>Display name</label>
         <input type="text" name="name" autofocus/>
       </div>
-      <div class="form-field">
+      <div  class="form-field">
         <label>Room name</label>
-        <input type="text" name="room"/>
+        <input id="room" type="text" name="room"/>
       </div>
       <div class="form-field">
-        <button>Join</button>
+        <button onclick="convert()">Join</button>
       </div>
     </form>
   </div>
+
+  <script>
+    function convert() {
+      let str = document.getElementById("room");
+      let form = document.getElementById("login");
+
+
+      form.submit();
+      str.value = (str.value.toLowerCase());
+    }
+  </script>
 </body>
 
 </html>
