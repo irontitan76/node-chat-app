@@ -17,7 +17,7 @@ function scrollToBottom () {
   }
 };
 
-socket.on('connect', function() {
+socket.on('connect', function () {
   let params = $.deparam(window.location.search);
 
   socket.emit('join', params, function(err) {
@@ -25,13 +25,23 @@ socket.on('connect', function() {
       alert(err);
       window.location.href = '/';
     } else {
-      console.log('No error');
+      console.log('SUCCESS');
     }
   });
 });
 
-socket.on('disconnect', function() {
+socket.on('disconnect', function () {
   console.log('Disconnected to server');
+});
+
+socket.on('updateUserList', function (users) {
+  let ol = $('<ol></ol>');
+
+  users.forEach(function (user) {
+    ol.append($('<li></li>').text(user));
+  });
+
+  $('#users').html(ol);
 });
 
 socket.on('newMessage', function (message) {
