@@ -8,7 +8,6 @@ const {isRealString} = require('./utils/validation');
 
 const PORT = process.env.PORT || 3000;
 var app = express();
-
 var server = http.createServer(app);
 var io = socketIO(server);
 
@@ -48,4 +47,4 @@ server.listen(PORT, () => {
   console.log(`Started on port ${PORT}`);
 });
 
-module.exports = {app};
+// module.exports = {app};
